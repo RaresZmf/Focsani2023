@@ -35,10 +35,16 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
+  /* background: linear-gradient(
       to bottom,
       transparent,
       rgb(var(--background-end-rgb))
     )
-    rgb(var(--background-start-rgb));
+    rgb(var(--background-start-rgb)); */
+    background-color: #ffffff;
+    opacity: 1;
+    background-image:  radial-gradient(#c7e795 1.4500000000000002px, transparent 1.4500000000000002px), radial-gradient(#c7e795 1.4500000000000002px, #ffffff 1.4500000000000002px);
+    background-size: 58px 58px;
+    background-position: 0 0,29px 29px;
+    background-attachment: fixed;
 }
