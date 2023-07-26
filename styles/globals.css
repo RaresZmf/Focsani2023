@@ -1,6 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500&display=swap');
+
 
 :root {
   --foreground-rgb: 0, 0, 0;
@@ -14,6 +16,20 @@
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
   }
+}
+
+.bg_pattern {
+  background-color: #ffffff;
+  opacity: 1;
+  background-image:  radial-gradient(#c7e795 1.4500000000000002px, transparent 1.4500000000000002px), radial-gradient(#c7e795 1.4500000000000002px, #ffffff 1.4500000000000002px);
+  background-size: 58px 58px;
+  background-position: 0 0,29px 29px;
+}
+
+*{
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
 body {
