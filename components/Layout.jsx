@@ -5,13 +5,14 @@ import Loading from './Loading';
 import NavBar from './NavBar';
 import Link from 'next/link';
 
+import { useUser, withPageAuthRequired } from '@auth0/nextjs-auth0/client';
 
 function Layout({ children }) {
   const [loading, setloading] = useState(true)
   useEffect(() => {
     setTimeout(() => {
       setloading(false);
-    }, 400);
+    }, 2000);
   }, [])
 
   return (
@@ -19,7 +20,7 @@ function Layout({ children }) {
       {!loading ? <><Head>
         <title>RoboZone</title>
       </Head>
-        <main id="app" className=' flex flex-col text-white bg_pattern bgpattern w-screen h-screen justify-between content-center items-center'>
+        <main id="app" className='bg-repeat flex flex-col text-white bg_pattern bgpattern w-screen h-screen justify-between content-center items-center'>
         <NavBar />
           <Container>{children}</Container>
           <div className='shadow-md text-sm text-bold text-gray-700 bg-white white rounded-b-none flex-wrap border-b-0 border-2 border-gray-100 p-5 flex flex-row justify-center sm:justify-between rounded-xl max-w-[500px] w-[80vw] space-x-3'>
@@ -33,8 +34,6 @@ function Layout({ children }) {
   )
 }
 
-export default Layout
-
-// export default AuthRequired(Layout, {
-//   onRedirecting: () => '',
-// });
+export default withPageAuthRequired(Layout, {
+  onRedirecting: () => '',
+});
