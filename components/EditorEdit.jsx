@@ -1,4 +1,3 @@
-
 import React from "react";
 import { useEffect, useRef, useState } from "react";
 import EditorJS from "@editorjs/editorjs";
@@ -11,7 +10,7 @@ import supabase from "@/utils/supabase";
 
 import { useRouter } from "next/router";
 
-export default function Editor({id,title, json, utility, dif }) {
+export default function Editor({id,title, json, utility, dif, categorie }) {
     const editorRef = useRef(null);
     const [editorData, setEditorData] = useState(null);
     const [fetchedContent, setfetchedContent] = useState(null)
@@ -19,6 +18,7 @@ export default function Editor({id,title, json, utility, dif }) {
     const [titlu, settitlu] = useState(title)
     const [utilizare, setutilizare] = useState(utility)
     const [dificultate, setdificultate] = useState(dif)
+    const [tip, setTip] = useState(categorie)
 
     console.log(titlu)
     console.log(utility)
@@ -95,7 +95,7 @@ export default function Editor({id,title, json, utility, dif }) {
                 .from('Noduri')
                 .update({ 
                     nume: titlu ? titlu : title, 
-                    categorie: 'Denmark', 
+                    categorie: categorie, 
                     dificultate: dificultate,
                     utilizare: utilizare,
                 })
@@ -138,6 +138,21 @@ export default function Editor({id,title, json, utility, dif }) {
                         <button className="hover:bg-primary px-[10px] py-[5px] transition-colors rounded-xl" onClick={function(){setdificultate('mediu')}}>Mediu</button>
                         <button className="hover:bg-primary px-[10px] py-[5px] transition-colors rounded-xl" onClick={function(){setdificultate('greu')}}>Greu</button>
                         <button className="hover:bg-primary px-[10px] py-[5px] transition-colors rounded-xl" onClick={function(){setdificultate('expert')}}>Expert</button>
+                    </div>
+                </div>
+                <div className="text-3xl text-center font-bold group text-black relative">
+                    <button className="text-black bg-white">{categorie}</button>
+                    <div className="invisible group-hover:visible relative flex flex-col left-[0px] top-4 pb-6 space-y-2">
+                        <button className="hover:bg-primary px-[10px] py-[5px] transition-colors rounded-xl" onClick={function(){setTip('de baza')}}>de baza</button>
+                        <button className="hover:bg-primary px-[10px] py-[5px] transition-colors rounded-xl" onClick={function(){setTip('curbe')}}>curbe</button>
+                        <button className="hover:bg-primary px-[10px] py-[5px] transition-colors rounded-xl" onClick={function(){setTip('bucle de capat')}}>bucle de capat</button>
+                        <button className="hover:bg-primary px-[10px] py-[5px] transition-colors rounded-xl" onClick={function(){setTip('carlige')}}>carlige</button>
+                        <button className="hover:bg-primary px-[10px] py-[5px] transition-colors rounded-xl" onClick={function(){setTip('covor')}}>covor</button>
+                        <button className="hover:bg-primary px-[10px] py-[5px] transition-colors rounded-xl" onClick={function(){setTip('bucle mijlocii')}}>bucle mijlocii</button>
+                        <button className="hover:bg-primary px-[10px] py-[5px] transition-colors rounded-xl" onClick={function(){setTip('alunecare si prindere')}}>alunecare si prindere</button>
+                        <button className="hover:bg-primary px-[10px] py-[5px] transition-colors rounded-xl" onClick={function(){setTip('imbinare')}}>imbinare</button>
+                        <button className="hover:bg-primary px-[10px] py-[5px] transition-colors rounded-xl" onClick={function(){setTip('dopuri')}}>dopuri</button>
+
                     </div>
                 </div>
                 <button disabled={loading} onClick={handleSave} className='w-full bg-black text-white h-[50px] rounded-xl font-bold'>

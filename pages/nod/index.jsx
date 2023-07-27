@@ -44,15 +44,16 @@ export default function Noduri(){
         fetchData()
     }, [])
 
-    console.log(query.utilizare);
+    console.log("Util")
+    console.log(query.categorie);
     const newArticles = articles.filter((item) => {
-        return item.utilizare == query.utilizare || item.dificultate == query.dificultate;
+        return item.utilizare == query.utilizare || item.dificultate == query.dificultate || item.categorie == query.categorie;
     });
     return(
         <div>
             <div className="flex flex-row items-center space-x-6">
-                <h1 className="text-black text-5xl my-[10vh]">Noduri filtrate dupa <span className=" font-bold">{query.utilizare == undefined ? "dificultate: " + query.dificultate : "utilizare: " + query.utilizare }</span></h1>
-                {query.utilizare &&
+                <h1 className="text-black text-5xl my-[10vh]">Noduri filtrate dupa <span className=" font-bold">{query.categorie === undefined ?   query.utilizare == undefined ? "dificultate: " + query.dificultate  : "utilizare: " + query.utilizare : "tip: " + query.categorie }</span></h1>
+                {(query.utilizare || query.categorie) &&
                 <div className="relative">
                     <button onClick={function(){toggleDropdown()}} className="text-white bg-primary hover:bg-lime-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center" type="button">
                         Sorteaza dupa dificultate:
