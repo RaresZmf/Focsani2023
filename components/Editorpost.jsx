@@ -6,7 +6,6 @@ import EditorJS from "@editorjs/editorjs";
 // tools
 import Header from "@editorjs/header";
 import Paragraph from "@editorjs/paragraph";
-
 import Undo from 'editorjs-undo';
 import DragDrop from 'editorjs-drag-drop';
 
@@ -48,6 +47,10 @@ export default function Editor({ read, title, json, note, user, actual_user, own
                         defaultLevel: 3
                     },
                     shortcut: "CMD+SHIFT+H",
+                },
+                paragraph: {
+                    class: Paragraph,
+                    inlineToolbar: true,
                 },
             },
             // autofocus: true,
@@ -103,15 +106,12 @@ export default function Editor({ read, title, json, note, user, actual_user, own
             }
             // fetchContent(note).then((response) => { initEditor(response.json) })
         } else editorRef.current.destroy();
-
     }, []);
 
-
-
-
     return (
-        <div className="flex flex-col items-center content-center justify-center">
-            <div id="editorjs_post" className=" pt-10 z-0 rounded-lg bg-pink-100 text-pink-400  w-[1000px] color-[#37352f]" />
+        <div className="flex flex-col items-center content-center justify-center mt-[20vh] border-2 border-grey-200 rounded-2xl shadow-md">
+            <input className='bg-transparent self-start w-full caret-blue-500 border-transparent focus:border-transparent focus:ring-0 text-5xl focus:outline-none' placeholder='Titlu' />
+            <div id="editorjs_post" className=" pt-10 z-0 rounded-lg bg-gray-50 text-black max-w-[1000px] w-[90vw] color-[#37352f]" />
         </div>
     );
 }

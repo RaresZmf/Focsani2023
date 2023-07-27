@@ -2,7 +2,7 @@ import React from 'react';
 import dynamic from 'next/dynamic';
 import { useUser } from '@auth0/nextjs-auth0/client';
 const Editor = dynamic(
-    () => import("../../../components/Editorpost"),
+    () => import("../../../components/Editoradd"),
     { ssr: false }
 );
 

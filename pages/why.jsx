@@ -5,7 +5,7 @@ export default function why() {
   return (
     <main className='flex flex-col items-center text-gray-700'>
       <div className='flex flex-col gap-10 items-center'>
-        <h1 className='text-6xl font-bold text-gray-700 mt-[30vh] text-center'>De ce ar fi o abilitate utilă <br /> să înveți cum să faci noduri?</h1>
+        <h1 className='text-6xl font-bold text-gray-700 mt-[10vh] text-center'>De ce ar fi o abilitate utilă <br /> să înveți cum să faci noduri?</h1>
       </div>
       <div className='flex flex-row items-center space-x-96 justify-between'>
         <Image className='mr-[200px]' src={'https://res.cloudinary.com/dha7yg3ul/image/upload/v1690400723/Tent_amc4t4.png'} width={300} height={300} />

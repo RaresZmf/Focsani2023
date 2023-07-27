@@ -20,9 +20,9 @@ function Layout({ children }) {
       {!loading ? <><Head>
         <title>RoboZone</title>
       </Head>
-        <main id="app" className='bg-repeat flex flex-col text-white bg_pattern w-screen h-full justify-between content-center items-center h-[100vh]'>
+        <main id="app" className='bg-repeat flex flex-col text-white bg_pattern w-screen justify-between content-center items-center'>
         <NavBar />
-          <Container>{children}</Container>
+          <Container className='min-h-[100vh] ml-[70px]'>{children}</Container>
           <div className='shadow-md text-sm text-bold text-gray-700 bg-white white rounded-b-none flex-wrap border-b-0 border-2 border-gray-100 p-5 flex flex-row justify-center sm:justify-between rounded-xl max-w-[500px] w-[80vw] space-x-3'>
             <Link href={"https://github.com/RaresZmf/RoboZone"}>GitHub</Link>
             <Link href={"/about"}>About</Link>
