@@ -19,29 +19,15 @@ export default function NavBar(){
                     </Link>
                     <div className="text-2xl text-center font-bold group relative">
                         <Image src={"https://res.cloudinary.com/dha7yg3ul/image/upload/v1690454159/Palnie_xgov01.png"} width={50} height={50}></Image>
-                        <div className="invisible group-hover:visible rounded-xl absolute pl-[140px] space-y-2 top-0">
-                            <div className="text-black hover:bg-primary hover:text-white px-3 py-2 transition-colors rounded-xl"><Link href={{pathname:"../nod", query:{categorie:"de baza"}}}>de baza</Link></div>
-                            <div className="text-black hover:bg-primary hover:text-white px-3 py-2 transition-colors rounded-xl"><Link href={{pathname:"../nod", query:{categorie:"curbe"}}}>curbe</Link></div>
-                            <div className="text-black hover:bg-primary hover:text-white px-3 py-2 transition-colors rounded-xl"><Link href={{pathname:"../nod", query:{categorie:"bucle de capat"}}}>bucle de capat</Link></div>
-                            <div className="text-black hover:bg-primary hover:text-white px-3 py-2 transition-colors rounded-xl"><Link href={{pathname:"../nod", query:{categorie:"carlige"}}}>carlige</Link></div>
-                            <div className="text-black hover:bg-primary hover:text-white px-3 py-2 transition-colors rounded-xl"><Link href={{pathname:"../nod", query:{categorie:"covor"}}}>covor</Link></div>
-                            <div className="text-black hover:bg-primary hover:text-white px-3 py-2 transition-colors rounded-xl"><Link href={{pathname:"../nod", query:{categorie:"bucle mijlocii"}}}>bucle mijlocii</Link></div>
-                            <div className="text-black hover:bg-primary hover:text-white px-3 py-2 transition-colors rounded-xl"><Link href={{pathname:"../nod", query:{categorie:"alunecare si prindere"}}}>alunecare si prindere</Link></div>
-                            <div className="text-black hover:bg-primary hover:text-white px-3 py-2 transition-colors rounded-xl"><Link href={{pathname:"../nod", query:{categorie:"imbinare"}}}>imbinare</Link></div>
-                            <div className="text-black hover:bg-primary hover:text-white px-3 py-2 transition-colors rounded-xl"><Link href={{pathname:"../nod", query:{categorie:"dopuri"}}}>dopuri</Link></div>
-                        </div>
-                    </div>
-                    <div className="text-3xl text-center font-bold group relative">
-                        <Image src={"https://res.cloudinary.com/dha7yg3ul/image/upload/v1690447317/photo_2023-07-27_11-38-35_vur8vu.png"} width={50} height={50}></Image>
                         <div className="invisible group-hover:visible rounded-xl absolute pl-[140px] top-0 space-y-3">
                             <div className="text-black hover:bg-primary hover:text-white px-3 py-2 transition-colors rounded-xl"><Link href={{pathname:"../nod", query:{utilizare:"pescuit"}}}>Pentru Pescuit</Link></div>
-                            <div className="text-black hover:bg-primary hover:text-white px-3 py-2 transition-colors rounded-xl"><Link href={{pathname:"../nod", query:{utilizare:"incaltaminte"}}}>Pentru Incaltaminte</Link></div>
-                            <div className="text-black hover:bg-primary hover:text-white px-3 py-2 transition-colors rounded-xl"><Link href={{pathname:"../nod", query:{utilizare:"cravata"}}}>Pentru Cravata</Link></div>
+                            <div className="text-black hover:bg-primary hover:text-white px-3 py-2 transition-colors rounded-xl"><Link href={{pathname:"../nod", query:{utilizare:"camping"}}}>Pentru Camping</Link></div>
+                            <div className="text-black hover:bg-primary hover:text-white px-3 py-2 transition-colors rounded-xl"><Link href={{pathname:"../nod", query:{utilizare:"haine"}}}>Pentru Haine</Link></div>
                             <div className="text-black hover:bg-primary hover:text-white px-3 py-2 transition-colors rounded-xl"><Link href={{pathname:"../nod", query:{utilizare:"rezistenta"}}}>Pentru Rezistenta</Link></div>
                             <div className="text-black hover:bg-primary hover:text-white px-3 py-2 transition-colors rounded-xl"><Link href={{pathname:"../nod", query:{utilizare:"altele"}}}>Altele</Link></div>
                         </div>
                     </div>
-                    <div className="text-3xl text-center font-bold group relative">
+                    <div className="text-2xl text-center font-bold group relative">
                         <Image src={"https://res.cloudinary.com/dha7yg3ul/image/upload/v1690446786/acceleratiealb_ihey6i.png"} width={50} height={50}></Image>
                         <div className="invisible group-hover:visible rounded-xl absolute pl-[140px] space-y-3 top-0">
                             <div className="text-black hover:bg-primary hover:text-white px-3 py-2 transition-colors rounded-xl"><Link href={{pathname:"../nod", query:{dificultate:"usor"}}}>Usor</Link></div>

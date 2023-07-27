@@ -3,9 +3,24 @@ import { useEffect, useState } from 'react'
 import { useRouter } from "next/router";
 import supabase from '@/utils/supabase';
 import Postcard from "@/components/Admincard"
+import { useUser } from '@auth0/nextjs-auth0/client';
+
 export default function () {
     const [articles, setarticles] = useState([])
-    const routers= useRouter()
+    const routers = useRouter();
+    const { user, isLoading } = useUser();
+
+    async function fetchAdmin() {
+        const { data, error } = await supabase
+            .from('userdata')
+            .select("admin")
+            .eq("auth0id", user.sub)
+            .limit(1);
+        if(!data[0].admin){routers.push('/')}
+    }
+    useEffect(() => {
+        fetchAdmin()
+    }, [])
 
     async function fetchData() {
         try {

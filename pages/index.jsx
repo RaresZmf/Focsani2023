@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
-import { useUser } from "@auth0/nextjs-auth0/client";
+import { useUser, useEffect } from "@auth0/nextjs-auth0/client";
 import supabase from '@/utils/supabase';
 import { useRouter } from 'next/router';
 
@@ -11,7 +11,6 @@ export default function Home() {
   const routers = useRouter();
   const { user, isLoading } = useUser();
   console.log(user);
-
 
 
   async function fetchUser() {
@@ -33,13 +32,13 @@ export default function Home() {
     }
   }
 
-  if (user)
-    fetchUser()
+    if (user) {
+      fetchUser();}
 
   return (
     <main className='flex flex-col items-center'>
       <div className='flex flex-col gap-10 items-center'>
-        <h1 className='text-8xl font-bold text-gray-700 mt-[30vh] text-center'>Stapaneste <span className='bg-clip-text text-transparent bg-gradient-to-r from-lime-500 to-lime-300'>Nodurile</span>.</h1>
+        <h1 className='text-8xl font-bold text-gray-700 mt-[30vh] text-center'>Arta <span className='bg-clip-text text-transparent bg-gradient-to-r from-lime-500 to-lime-300'>Nodurilor</span>.</h1>
       </div>
       <div className='text-gray-500 text-xl text-center py-[20px]'>
         <p>Descoperă arta nodurilor! Învață

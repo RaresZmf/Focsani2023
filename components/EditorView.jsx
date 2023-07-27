@@ -1,15 +1,17 @@
-import React from 'react';
+import React from "react";
 import { useEffect, useRef, useState } from "react";
 import EditorJS from "@editorjs/editorjs";
+import axios from "axios";
+
 // tools
 import Header from "@editorjs/header";
 import Paragraph from "@editorjs/paragraph";
-import Image from "@editorjs/image";
-import axios from "axios";
 
 import Undo from "editorjs-undo";
 import DragDrop from "editorjs-drag-drop";
 import supabase from "@/utils/supabase";
+import ImageUpload from "./ImageUpload";
+import Image from "@editorjs/image";
 
 import { useRouter } from "next/router";
 
@@ -22,7 +24,7 @@ export default function Editor({
   actual_user,
   owner,
 }) {
-    const editorRef = useRef(null);
+  const editorRef = useRef(null);
   const [editorData, setEditorData] = useState(null);
   const [fetchedContent, setfetchedContent] = useState(null);
   const [loading, setloading] = useState(false);
@@ -34,24 +36,12 @@ export default function Editor({
   const [ready, setready] = useState(false);
 
   const router = useRouter();
+  console.log("JSON:::")
+  console.log(json);
 
   function get_url_extension(url) {
     return url.split(/[#?]/)[0].split(".").pop().trim();
   }
-
-  useEffect(() => {
-    const exitingFunction = () => {
-      // editorRef.current.destroy();
-      console.log("destronying editor");
-    };
-
-    router.events.on("routeChangeStart", exitingFunction);
-
-    return () => {
-      console.log("unmounting component...");
-      router.events.off("routeChangeStart", exitingFunction);
-    };
-  }, []);
 
   async function up(file) {
     const formData = new FormData();
@@ -76,9 +66,46 @@ export default function Editor({
     }
   }
 
+  useEffect(() => {
+    const exitingFunction = () => {
+      editorRef.current.destroy();
+      console.log("destronying editor");
+    };
+
+    router.events.on("routeChangeStart", exitingFunction);
+
+    return () => {
+      console.log("unmounting component...");
+      router.events.off("routeChangeStart", exitingFunction);
+    };
+  }, []);
+  async function up(file) {
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append(
+      "upload_preset",
+      process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET
+    );
+
+    try {
+      const res = await axios.post(
+        process.env.NEXT_PUBLIC_CLOUDINARY_URL,
+        formData
+      );
+
+      console.log("res:");
+      console.log(res);
+      const data = await res;
+      return res.data.secure_url;
+      
+    } catch (error) {
+      console.error("Eroare la încărcarea imaginii:", error);
+    }
+  }
+
   async function initEditor(cc) {
     const editor = new EditorJS({
-      readOnly: false,
+      readOnly: true,
       holderId: "editorjs_post",
       tools: {
         header: {
@@ -121,12 +148,12 @@ export default function Editor({
       // autofocus: true,
       placeholder: "Write your story...",
       data: {
-        blocks: cc,
-      },
-      onReady: () => {
+          blocks: cc,
+        },
+        onReady: () => {
+        console.log("DJKWLA:")
         console.log("Editor.js is ready to work!");
         editorRef.current = editor;
-        console.log(json);
         new Undo({ editor });
         new DragDrop(editor);
       },
@@ -141,15 +168,17 @@ export default function Editor({
   }
 
   const handleSave = async () => {
+    console.log("se salveaza")
     setloading(true);
     const outputData = await editorRef.current.save();
-    console.log(title);
+    console.log(titlu);
     try {
       const { error } = await supabase.from("Noduri").insert({
         nume: titlu,
+        categorie: "Denmark",
         dificultate: dificultate,
         utilizare: utilizare,
-        json: outputData.blocks,
+        json: JSON.stringify(outputData),
       });
       console.log("se adauga");
       if (!error) {
@@ -158,14 +187,14 @@ export default function Editor({
     } catch (error) {
       console.log(error);
     }
-    console.log(JSON.stringify(outputData));
-    router.push("/admin");
+    console.log(outputData);
   };
 
   useEffect(() => {
     if (!editorRef.current) {
       if (window !== "undefined") {
         initEditor(json);
+        console.log(json)
       }
     } else editorRef.current.destroy();
   }, []);
@@ -199,7 +228,7 @@ export default function Editor({
             <button
               className="hover:bg-primary px-[10px] py-[5px] transition-colors rounded-xl"
               onClick={function () {
-                setutilizare("camping");
+                setutilizare("incaltaminte");
               }}
             >
               Pentru incaltaminte
@@ -207,7 +236,7 @@ export default function Editor({
             <button
               className="hover:bg-primary px-[10px] py-[5px] transition-colors rounded-xl"
               onClick={function () {
-                setutilizare("haine");
+                setutilizare("cravata");
               }}
             >
               Pentru cravata

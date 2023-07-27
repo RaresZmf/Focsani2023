@@ -7,6 +7,20 @@ export default function () {
     const [articles, setarticles] = useState([])
     const routers = useRouter()
 
+    const { user, isLoading } = useUser();
+
+    async function fetchAdmin() {
+        const { data, error } = await supabase
+            .from('userdata')
+            .select("admin")
+            .eq("auth0id", user.sub)
+            .limit(1);
+        if(!data[0].admin){routers.push('/')}
+    }
+    useEffect(() => {
+        fetchAdmin()
+    }, [])
+
     async function fetchData() {
         try {
             const { data, error } = await supabase

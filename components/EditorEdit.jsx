@@ -4,9 +4,10 @@ import EditorJS from "@editorjs/editorjs";
 
 // tools
 import Header from "@editorjs/header";
+import Image from "@editorjs/image";
 import Paragraph from "@editorjs/paragraph";
 import supabase from "@/utils/supabase";
-
+import axios from "axios";
 
 import { useRouter } from "next/router";
 
@@ -27,6 +28,28 @@ export default function Editor({id,title, json, utility, dif, categorie }) {
     function get_url_extension(url) {
         return url.split(/[#?]/)[0].split('.').pop().trim();
     }
+    async function up(file) {
+        const formData = new FormData();
+        formData.append("file", file);
+        formData.append(
+          "upload_preset",
+          process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET
+        );
+    
+        try {
+          const res = await axios.post(
+            process.env.NEXT_PUBLIC_CLOUDINARY_URL,
+            formData
+          );
+    
+          console.log("res:");
+          console.log(res);
+          const data = await res;
+          return res.data.secure_url;
+        } catch (error) {
+          console.error("Eroare la încărcarea imaginii:", error);
+        }
+      }
 
     useEffect(() => {
         const exitingFunction = () => {
@@ -63,6 +86,28 @@ export default function Editor({id,title, json, utility, dif, categorie }) {
                     class: Paragraph,
                     inlineToolbar: true,
                 },
+                image: {
+                    class: Image,
+                    config: {
+                      uploader: {
+                        uploadByFile(file) {
+                          console.log(file);
+          
+                          // your own uploading logic here
+                          return up(file).then((response) => {
+                            console.log(response);
+                            return {
+                              success: 1,
+                              file: {
+                                url: response,
+                                // any other image data you want to store, such as width, height, color, extension, etc
+                              },
+                            };
+                          });
+                        },
+                      },
+                    },
+                  },
             },
             // autofocus: true,
             placeholder: "Write your story...",

@@ -3,6 +3,7 @@ import Postcard from "@/components/Admincard"
 import { useEffect, useState } from 'react'
 import supabase from '@/utils/supabase';
 import Link from "next/link";
+import UserPostCard from "@/components/UserPost";
 
 
 export default function Noduri(){
@@ -70,7 +71,6 @@ export default function Noduri(){
                                     const newArticles = articles.sort((a, b) => {
                                         return !(a.dificultate.localeCompare(b.dificultate));
                                     });
-                                    setarticles(newArticles);
                                     setIsOpen(false);
                                     console.log("jrkwlad");
                                 }}
@@ -82,6 +82,7 @@ export default function Noduri(){
                                     const newArticles = articles.sort((a, b) => {
                                         return a.dificultate.localeCompare(b.dificultate);
                                     });
+                                    console.log(newArticles)
                                     setarticles(newArticles);
                                     setIsOpen(false);
                                     console.log("jrkwlad");
@@ -95,9 +96,9 @@ export default function Noduri(){
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 {newArticles.map((item) => (
-                    <div className='' key={'ROBOZONE_COMMUNITY_POST_X_' + item.id} onClick={() => routers.push('./noduri/edit/' + item.id)}>
+                    <div className='' key={'ROBOZONE_COMMUNITY_POST_X_' + item.id}>
                         <div className="">
-                            <Postcard id={item.id} title={item.nume} likes={item.json? item.json.length : 0} time={item.created_at} util={item.utilizare} dif={item.dificultate}/>
+                            <UserPostCard id={item.id} title={item.nume} likes={item.json? item.json.length : 0} time={item.created_at} util={item.utilizare} dif={item.dificultate}/>
                         </div>
                     </div>
                 ))}

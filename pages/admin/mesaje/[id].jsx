@@ -30,6 +30,7 @@ export default function ViewPost() {
             .limit(1);
         setisadmin(data[0].admin)
         console.log(isadmin);
+        if(!data[0].admin){router.push('/')}
     }
 
     async function fetchData(id) {
