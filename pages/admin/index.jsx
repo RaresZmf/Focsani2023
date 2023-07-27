@@ -2,10 +2,28 @@ import React from 'react'
 import { useUser, withPageAuthRequired } from "@auth0/nextjs-auth0/client";
 import Image from 'next/image';
 import Link from 'next/link';
+import isAdmin from '@/components/IsAdmin';
+import { useRouter } from 'next/router';
+import { useState } from 'react';
+import supabase from '@/utils/supabase';
+import { useEffect } from 'react';
 
 function index() {
-
+    const routers = useRouter();
     const { user, isLoading } = useUser();
+
+    async function fetchAdmin() {
+        const { data, error } = await supabase
+            .from('userdata')
+            .select("admin")
+            .eq("auth0id", user.sub)
+            .limit(1);
+        if(!data[0].admin){routers.push('/')}
+    }
+    useEffect(() => {
+        fetchAdmin()
+    }, [])
+
 
     return (
         <div className='flex flex-col items-center justify-start'>
