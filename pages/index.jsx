@@ -38,7 +38,7 @@ export default function Home() {
   return (
     <main className='flex flex-col items-center'>
       <div className='flex flex-col gap-10 items-center'>
-        <h1 className='text-8xl font-bold text-gray-700 mt-[30vh] text-center'>Arta <span className='bg-clip-text text-transparent bg-gradient-to-r from-lime-500 to-lime-300'>Nodurilor</span>.</h1>
+        <h1 className='text-8xl font-bold text-gray-700 mt-[20vh] text-center'>Arta <span className='bg-clip-text text-transparent bg-gradient-to-r from-lime-500 to-lime-300'>Nodurilor</span>.</h1>
       </div>
       <div className='text-gray-500 text-xl text-center py-[20px]'>
         <p>Descoperă arta nodurilor! Învață
