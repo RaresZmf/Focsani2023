@@ -65,13 +65,12 @@ export default function ViewPost() {
     }, []);
         return (
             <>
-                <div className='flex flex-col items-center space-y-10 py-24'>
+                <div className='flex flex-col items-center space-y-10 py-24 pt-4'>
                     <div className='flex flex-row justify-center text-center break-words'>
                         <span className='text-2xl sm:text-4xl md:text-6xl text-black font-bold underline decoration-blue-500 w-[80vw] max-w-[800px]'>{post?.title}</span>
-                        <span className='text-black'>DKdwaljdklwa</span>
                     </div>
                     <div className='flex flex-row items-center content-center justify-center space-x-5'>
-                        <Image src={post?.creator_pic} width={50} height={50} alt='' className='rounded-full shadow' />
+                        {/* <Image src={"https://res.cloudinary.com/dha7yg3ul/image/upload/v1690467530/Carabine_zax6vp.png"} width={200} height={200} alt='' className='rounded-full shadow ml-[300px]' /> */}
                         <div className='flex flex-col justify-center items-start content-start'>
                             <span className='text-center font-bold underline decoration-blue-500 decoration-4 text-lg'>{post?.creator_name}</span>
                         </div>

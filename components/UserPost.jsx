@@ -17,10 +17,10 @@ export default function UserPostCard({
   return (
     <div
       onClick={() => router.push("/nod/view/" + id)}
-      className={"flex flex-col text-gray-700 bg-white hover:-translate-y-[10px] cursor-pointer hover:shadow-md space-y-3 transition duration-300 ease-in-out border justify-between rounded-xl p-5 shadow"}
+      className={"flex flex-col text-gray-700 bg-white h-[300px] hover:-translate-y-[10px] cursor-pointer hover:shadow-md space-y-3 transition duration-300 ease-in-out border justify-center items-center align-center rounded-xl p-5 shadow"}
     >
-      <div className="flex flex-row w-full justify-between items-center content-center">
-        <span className="underline decoration-4 text-left decoration-lime-500 font-bold text-lg">
+      <div className="flex flex-row w-full justify-center align-center items-center content-center">
+        <span className="underline text-4xl decoration-4 text-center decoration-lime-500 font-bold">
           {title}
         </span>
       </div>

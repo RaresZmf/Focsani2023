@@ -21,7 +21,7 @@ export default function ticket() {
     }
 
     return (
-        <div className='flex flex-col items-center space-y-8 mt-[200px] mb-[50px]'>
+        <div className='flex flex-col items-center space-y-8 mt-[90px] mb-[50px]'>
             <span className='py-[20px] font-bold text-8xl bg-clip-text text-transparent bg-gradient-to-r from-lime-600 to-lime-200'>
                 Trimite un mesaj
             </span>

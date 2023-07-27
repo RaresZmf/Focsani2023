@@ -206,6 +206,7 @@ export default function Editor({
         onChange={(e) => settitlu(e.target.value)}
         className="text-gray-700 bg-transparent self-start w-full caret-blue-500 border-transparent focus:border-transparent focus:ring-0 text-5xl focus:outline-none"
         placeholder="Titlu"
+        value={titlu}
       />
       <div
         id="editorjs_post"

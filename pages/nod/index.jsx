@@ -48,7 +48,7 @@ export default function Noduri(){
     console.log("Util")
     console.log(query.categorie);
     const newArticles = articles.filter((item) => {
-        return item.utilizare == query.utilizare || item.dificultate == query.dificultate || item.categorie == query.categorie;
+        return item.utilizare == query.utilizare || item.dificultate == query.dificultate;
     });
     return(
         <div>
